@@ -13,11 +13,9 @@ export const getAssistantFilesByAssistantId = async (assistantId: string) => {
     )
     .eq("id", assistantId)
     .single()
-
-  if (!assistantFiles) {
-    throw new Error(error.message)
-  }
-
+    if (error) {
+      throw new Error(error.message}
+}
   return assistantFiles
 }
 
@@ -28,6 +26,7 @@ export const createAssistantFile = async (
     .from("assistant_files")
     .insert(assistantFile)
     .select("*")
+    .single()
 
   if (!createdAssistantFile) {
     throw new Error(error.message)
@@ -44,7 +43,7 @@ export const createAssistantFiles = async (
     .insert(assistantFiles)
     .select("*")
 
-  if (!createdAssistantFiles) {
+  if (error) {
     throw new Error(error.message)
   }
 

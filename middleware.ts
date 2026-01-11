@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest) {
         .eq("is_home", true)
         .single()
 
-      if (!homeWorkspace){
+      if (homeWorkspace){
         return response
       }
 

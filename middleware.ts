@@ -22,8 +22,8 @@ export async function middleware(request: NextRequest) {
         .eq("is_home", true)
         .single()
 
-      if (!homeWorkspace) {
-        throw new Error(error?.message)
+      if (!homeWorkspace){
+        return response
       }
 
       return NextResponse.redirect(

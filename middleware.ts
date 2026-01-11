@@ -12,8 +12,7 @@ export async function middleware(request: NextRequest) {
     const {
       data : {session}
     } = await supabase.auth.getsession()
-
-    const redirectToChat = session && request.nextUrl.pathname === "/"
+    const redirectToChat = session?.user && request.nextUrl.pathname === "/"
 
     if (redirectToChat) {
       const { data: homeWorkspace, error } = await supabase

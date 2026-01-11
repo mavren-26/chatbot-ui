@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     if (redirectToChat) {
       const { data: homeWorkspace, error } = await supabase
         .from("workspaces")
-        .select("*")
+        .select("id")
         .eq("user_id", session.data.session?.user.id)
         .eq("is_home", true)
         .single()
